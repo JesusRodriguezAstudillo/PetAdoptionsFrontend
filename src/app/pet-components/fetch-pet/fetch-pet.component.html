@@ -1,0 +1,44 @@
+<div class="container">
+    <div *ngFor="let pet of petsArray">
+        <table class="table table-small">
+            <tbody>
+                <tr>
+                    <td colspan="7" rowspan="7">
+                        <div style="width:150px;display:flex;align-items: flex-end;">
+                            <img src="assets/images/{{ pet.name | lowercase }}.png" style="width:150px;">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">Name: </th>
+                    <td>{{ pet.name }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Species: </th>
+                    <td>{{ pet.species }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Breed: </th>
+                    <td>{{ pet.breed }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Gender: </th>
+                    <td>{{ pet.gender | gender}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Age: </th>
+                    <td>{{ pet.ageYears }} years and {{ pet.ageMonths }} months old</td>
+                </tr>
+                <tr>
+                    <th scope="row">Vaccinated: </th>
+                    <td>{{ pet.vaccinated }}</td>
+                </tr>
+                <tr>
+                    <td><a class="btn btn-primary" type="button" [routerLink]="['/petDetails', pet.id]">Get Details</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+    </div>
+</div>

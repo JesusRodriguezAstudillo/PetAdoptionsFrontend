@@ -1,0 +1,41 @@
+<div class="container">
+    <table *ngIf="petDetails; else loading" class="table table-small">
+        <tbody>
+            <tr>
+                <td colspan="7" rowspan="7">
+                    <div style="width:150px;display:flex;align-items: flex-end;">
+                        <img src="assets/images/{{ petDetails.name | lowercase }}.png" style="width:150px;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">Name: </th>
+                <td>{{ petDetails.name }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Species: </th>
+                <td>{{ petDetails.species }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Breed: </th>
+                <td>{{ petDetails.breed }}</td>
+            </tr>
+            <tr>
+                <th scope="row">Gender: </th>
+                <td>{{ petDetails.gender | gender}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Age: </th>
+                <td>{{ petDetails.ageYears }} years and {{ petDetails.ageMonths }} months old</td>
+            </tr>
+            <tr>
+                <th scope="row">Vaccinated: </th>
+                <td>{{ petDetails.vaccinated }}</td>
+            </tr>
+        </tbody>
+    </table>
+        
+    <ng-template #loading>
+        <h2>Loading pet info...</h2>
+    </ng-template>
+</div>
