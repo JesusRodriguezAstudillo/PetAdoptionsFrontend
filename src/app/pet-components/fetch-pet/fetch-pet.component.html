@@ -5,7 +5,7 @@
                 <tr>
                     <td colspan="7" rowspan="7">
                         <div style="width:150px;display:flex;align-items: flex-end;">
-                            <img src="assets/images/{{ pet.name | lowercase }}.png" style="width:150px;">
+                            <img [src]="petImageMap[pet.id]" style="width:150px;">
                         </div>
                     </td>
                 </tr>

@@ -4,7 +4,7 @@
             <tr>
                 <td colspan="7" rowspan="7">
                     <div style="width:150px;display:flex;align-items: flex-end;">
-                        <img src="assets/images/{{ petDetails.name | lowercase }}.png" style="width:150px;">
+                        <img [src]="petImagePath" style="width:150px;" onerror="this.src='assets/images/NoImageAvailable.png'">
                     </div>
                 </td>
             </tr>
@@ -34,7 +34,12 @@
             </tr>
         </tbody>
     </table>
-        
+    <span class="text-warning" *ngIf="reservePetMessage">{{ reservePetMessage }}</span>
+    <button class="btn btn-primary" (click)="reservePet()">Reserve Pet</button>
+    <button class="btn btn-danger" type="button" (click)="deletePet()">Delete Pet</button>
+    <a class="btn btn-primary" [routerLink]="['/viewAllPets']">Return to view all pets</a>
+
+
     <ng-template #loading>
         <h2>Loading pet info...</h2>
     </ng-template>

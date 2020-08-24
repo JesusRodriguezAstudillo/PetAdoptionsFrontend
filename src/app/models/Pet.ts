@@ -6,6 +6,8 @@ export class Pet {
     gender:string;
     ageYears:number;
     ageMonths:number;
+    image:string;
+    imageExt:string;
     vaccinated:boolean;
     reservedBy:number;
 }

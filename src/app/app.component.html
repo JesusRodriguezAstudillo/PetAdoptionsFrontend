@@ -1,20 +1,3 @@
 <h1>Pet Adoptions</h1>
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <a class="navbar-brand" href="#">Pet Adoptions</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navContent">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/login">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" routerLink="/sign-up">Sign Up</a>
-            </li>
-        </ul>
-    </div>    
-</nav>
+<app-navbar></app-navbar>
 <router-outlet></router-outlet>
-<h2>Welcome to jra pet adoptions!</h2>
-<p>You can start out by checking out all available pets by following this link: <a [routerLink]="['/viewAllPets']" class="btn btn-success">View all pets</a></p>

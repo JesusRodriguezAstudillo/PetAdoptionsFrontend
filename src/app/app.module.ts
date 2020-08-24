@@ -9,6 +9,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { FetchPetComponent } from './pet-components/fetch-pet/fetch-pet.component';
 import { GenderPipe } from './utility/pipes/gender.pipe';
 import { PetDetailsComponent } from './pet-components/pet-details/pet-details.component';
+import { HomeComponent } from './user-components/home/home.component';
+import { NavbarComponent } from './user-components/navbar/navbar.component';
+import { AddPetComponent } from './pet-components/add-pet/add-pet.component';
+import { DeletePetComponent } from './pet-components/delete-pet/delete-pet.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,10 @@ import { PetDetailsComponent } from './pet-components/pet-details/pet-details.co
     FetchPetComponent,
     GenderPipe,
     PetDetailsComponent,
+    HomeComponent,
+    NavbarComponent,
+    AddPetComponent,
+    DeletePetComponent,
   ],
   imports: [
     BrowserModule,
