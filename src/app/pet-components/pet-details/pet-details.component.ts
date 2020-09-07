@@ -6,6 +6,8 @@ import { PetDetailsService } from './pet-details.service';
 import { tap } from 'rxjs/operators';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DeletePetService } from '../delete-pet/delete-pet.service';
+import { AuthService } from 'src/app/utility/auth-service/auth.service';
+import { LocalStorageService } from 'src/app/utility/local-storage/local-storage.service';
 
 @Component({
   selector: 'app-pet-details',
@@ -19,12 +21,14 @@ export class PetDetailsComponent implements OnInit {
   reservePetMessage:string;
   petImagePath;
   apiResponse: string;
+  isAdmin:boolean;
 
-  constructor(private route:ActivatedRoute, private service:PetDetailsService, private deleteService:DeletePetService, private router:Router, private sanitizer:DomSanitizer) { }
+  constructor(private route:ActivatedRoute, private service:PetDetailsService, private deleteService:DeletePetService, private router:Router, private sanitizer:DomSanitizer, private storageService:LocalStorageService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => this.fetchPetDetails(params.id));
-  }
+    this.storageService.get("role") === "admin" ? this.isAdmin = true : this.isAdmin = false;
+}
 
   fetchPetDetails(petId) {
     this
@@ -35,7 +39,6 @@ export class PetDetailsComponent implements OnInit {
         this.petImagePath = this
                               .sanitizer
                               .bypassSecurityTrustResourceUrl("data:image/"+ this.petDetails.imageExt +";base64," + this.petDetails.image);
-        console.log(this.petImagePath);
       });
   }
 
@@ -44,7 +47,6 @@ export class PetDetailsComponent implements OnInit {
       .service
       .reservePet(this.petDetails.id)
       .subscribe(resp => {
-        console.log(resp);
         if(resp === "No token found!") {
           this.reservePetMessage = "Pets can only be reserved by register users.\nPlease log in or make an account to reserve " + this.petDetails.name + "!";
         }

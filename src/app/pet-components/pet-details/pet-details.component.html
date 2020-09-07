@@ -36,7 +36,7 @@
     </table>
     <span class="text-warning" *ngIf="reservePetMessage">{{ reservePetMessage }}</span>
     <button class="btn btn-primary" (click)="reservePet()">Reserve Pet</button>
-    <button class="btn btn-danger" type="button" (click)="deletePet()">Delete Pet</button>
+    <button *ngIf="isAdmin" class="btn btn-danger" type="button" (click)="deletePet()">Delete Pet</button>
     <a class="btn btn-primary" [routerLink]="['/viewAllPets']">Return to view all pets</a>
 
 

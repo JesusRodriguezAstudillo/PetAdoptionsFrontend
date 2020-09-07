@@ -12,6 +12,7 @@ import { Pet } from 'src/app/models/Pet';
 export class AddPetComponent implements OnInit {
 
   petForm:FormGroup;
+  response:string;
 
   constructor(private formBuilder:FormBuilder, private service:AddPetService, private changeDetector:ChangeDetectorRef) { }
 
@@ -35,10 +36,8 @@ export class AddPetComponent implements OnInit {
       const [file] = event.target.files;
 
       fileReader.readAsDataURL(file);
-      
 
       fileReader.onload = () => {
-
         this.petForm.patchValue({
           image: fileReader.result
         });
@@ -49,6 +48,7 @@ export class AddPetComponent implements OnInit {
   }
 
   getImageExtension(imgArray:string) {
+
     let firstFilter = imgArray.split(/data:image\//)[1];
     let secondFilter = firstFilter.split(/;base64.*/);
     
@@ -70,8 +70,10 @@ export class AddPetComponent implements OnInit {
     newPet.vaccinated = this.petForm.get("vaccinated").value;
     newPet.ageYears = this.petForm.get("ageYears").value;
     newPet.ageMonths = this.petForm.get("ageMonths").value;
-    newPet.image = this.getImageData(this.petForm.get("image").value);
-    newPet.imageExt = this.getImageExtension(this.petForm.get("image").value);
+    if(this.petForm.get("image").value) {
+      newPet.image = this.getImageData(this.petForm.get("image").value);
+      newPet.imageExt = this.getImageExtension(this.petForm.get("image").value);
+    }
 
     return newPet;
   }
@@ -80,6 +82,8 @@ export class AddPetComponent implements OnInit {
     this
       .service
       .addPet(this.formValuesToModel())
-      .subscribe(resp => console.log(resp), err => console.log(err));
+      .subscribe(resp => {
+        this.response = "Successfully added " + resp;
+      }, err => console.log(err));
   }
 }

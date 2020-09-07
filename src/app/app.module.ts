@@ -13,6 +13,7 @@ import { HomeComponent } from './user-components/home/home.component';
 import { NavbarComponent } from './user-components/navbar/navbar.component';
 import { AddPetComponent } from './pet-components/add-pet/add-pet.component';
 import { DeletePetComponent } from './pet-components/delete-pet/delete-pet.component';
+import { EditPetComponent } from './pet-components/edit-pet/edit-pet.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { DeletePetComponent } from './pet-components/delete-pet/delete-pet.compo
     NavbarComponent,
     AddPetComponent,
     DeletePetComponent,
+    EditPetComponent,
   ],
   imports: [
     BrowserModule,

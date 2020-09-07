@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="editPetForm" (ngSubmit)="editPetInfo()">
+        <div class="form-group row">
+            <label for="name" class="col-md-2 col-form-label">Name: </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="species" class="col-md-2 col-form-label">Species: </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="species" formControlName="species">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="breed" class="col-md-2 col-form-label">Breed: </label>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="breed" formControlName="breed">
+            </div>
+        </div>
+        <div class="form-group row">
+            <legend class="col-md-2 col-form-label">Gender: </legend>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="gender-female" formControlName="gender" value="F">
+                <label class="form-check-label" for="gender-female">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="gender-female" formControlName="gender" value="M">
+                <label class="form-check-label" for="gender-male">Male</label>
+            </div>
+        </div>
+        <div class="row">
+           <legend class="col-md-2 col-form-label">Age: </legend>
+           <div class="form-group form-inline">
+               <input class="form-control" type="number" id="ageYears" formControlName="ageYears">
+               <label for="ageYears">Years</label>
+           </div>
+           <div class="form-group form-inline">
+                <input class="form-control" type="number" id="ageMonths" formControlName="ageMonths">
+                <label for="ageMonths">Months</label>
+            </div>
+        </div>
+        <div class="form-group row">
+            <legend class="col-md-2 col-form-label">Vaccination Status: </legend>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="vaccinated-no" formControlName="vaccinated" value="false">
+                <label class="form-check-label" for="vaccinated-no">Not Vaccinated/Unknown</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="vaccinated-yes" formControlName="vaccinated" value="true">
+                <label class="form-check-label" for="vaccinated-yes">Vaccinated</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="pet-image image-upload-container">Pet Image: </label>
+            <input type="file" class="form-control-file" id="pet-image" accept="image/*" (change)="imageChangeEvent($event)">
+        </div>
+        <div *ngIf="petImagePreviewSrc">
+            <label>Current Image:</label>
+            <img [src]="petImagePreviewSrc" style="width:150px;" onerror="this.src='assets/images/NoImageAvailable.png'">
+        </div>
+        <button class="btn btn-primary">Submit Edited Info</button>
+        <button class="btn btn-danger" type="button" (click)="deletePet()">Delete Pet</button>
+        <a class="btn btn-primary" [routerLink]="['/viewAllPets']">View All Pets</a>
+    </form>
+</div>

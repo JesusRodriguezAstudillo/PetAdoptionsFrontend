@@ -12,9 +12,9 @@ export class NavbarComponent implements OnInit {
 
   role:string;
 
-  constructor(private storageService:LocalStorageService, private router:Router) {
-       this.router.events.subscribe(x => {
-      if(x.constructor.name === "NavigationEnd" && x["url"] === "/" && !this.role){
+  constructor(private storageService:LocalStorageService, private router:Router, private authService:AuthService) {
+      this.router.events.subscribe(x => {
+      if(x.constructor.name === "NavigationEnd" && !this.role){
         this.role = this.storageService.get("role");
       }
     })

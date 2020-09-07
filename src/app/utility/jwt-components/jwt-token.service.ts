@@ -42,6 +42,11 @@ export class JwtTokenService {
     return this.decodedJwtToken ? this.decodedJwtToken.id : null;
   }
 
+  getRoles() {
+    this.decodeToken();
+    return this.decodedJwtToken ? Object.keys(this.decodedJwtToken.authorities).map(key => this.decodedJwtToken.authorities[key]['authority']) : null;
+  }
+
   determineRole() {
     this.decodeToken();
 

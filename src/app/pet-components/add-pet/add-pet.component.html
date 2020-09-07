@@ -57,5 +57,7 @@
             <input type="file" class="form-control-file" id="pet-image" (change)="fileChangeEvent($event)"> 
         </div>
         <button class="btn btn-primary" type="submit">Add Pet</button>
+        <a class="btn btn-primary" [routerLink]="['/viewAllPets']">View All Pets</a>
     </form>
+    <h2 class="text-success">{{ response }}</h2>
 </div>

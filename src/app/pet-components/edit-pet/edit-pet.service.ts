@@ -7,13 +7,13 @@ import { LocalStorageService } from 'src/app/utility/local-storage/local-storage
 @Injectable({
   providedIn: 'root'
 })
-export class AddPetService {
+export class EditPetService {
 
   constructor(private httpClient:HttpClient, private storageService:LocalStorageService) { }
 
-  addPet(newPet:Pet):Observable<string> {
-    let headers = new HttpHeaders().set("Authorization", this.storageService.get("token"));
+  editPet(pet:Pet):Observable<string> {
+    let httpHeaders = new HttpHeaders().set("Authorization", this.storageService.get("token"));
 
-    return this.httpClient.post<string>("http://localhost:8080/jra/pet/addPet", newPet, { headers:headers, responseType: "text" as "json"})
+    return this.httpClient.put<string>("http://localhost:8080/jra/pet/editPet/" + pet.id, pet, { headers: httpHeaders, responseType: "text" as "json" });
   }
 }

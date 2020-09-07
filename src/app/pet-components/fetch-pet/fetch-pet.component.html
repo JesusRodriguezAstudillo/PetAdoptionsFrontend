@@ -5,7 +5,7 @@
                 <tr>
                     <td colspan="7" rowspan="7">
                         <div style="width:150px;display:flex;align-items: flex-end;">
-                            <img [src]="petImageMap[pet.id]" style="width:150px;">
+                            <img [src]="petImageMap[pet.id]" style="width:150px;" onerror="this.src='assets/images/NoImageAvailable.png'">
                         </div>
                     </td>
                 </tr>
@@ -34,7 +34,8 @@
                     <td>{{ pet.vaccinated }}</td>
                 </tr>
                 <tr>
-                    <td><a class="btn btn-primary" type="button" [routerLink]="['/petDetails', pet.id]">Get Details</a></td>
+                    <td *ngIf="!isAdmin"><a class="btn btn-primary" type="button" [routerLink]="['/petDetails', pet.id]">Get Details</a></td>
+                    <td *ngIf="isAdmin"><a class="btn btn-primary" type="button" [routerLink]="['/editPet', pet.id]">Edit Details</a></td>
                 </tr>
             </tbody>
         </table>

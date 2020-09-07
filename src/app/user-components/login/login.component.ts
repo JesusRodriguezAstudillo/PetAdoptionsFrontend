@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private loginService:LoginService, private localStorageService:LocalStorageService, private authService:AuthService, private router:Router) { }
 
   ngOnInit(): void {
+    this.localStorageService.clear();
+
     this.loginForm = this.formBuilder.group({
       username: ["",[Validators.required]],
       password: ["",[Validators.required]]
